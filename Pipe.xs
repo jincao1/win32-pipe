@@ -293,7 +293,11 @@ XS(XS_WIN32__Pipe_Peek)
 	if (Pipe){
 			vpData = Pipe->Peek(&dLen);
 			if(vpData){
-				XPUSHs(sv_2mortal(newSVpv((char *)vpData, dLen)));
+				if (dLen == 0) {
+					XPUSHs((SV*) &PL_sv_no);
+				} else {
+					XPUSHs(sv_2mortal(newSVpv((char *)vpData, dLen)));
+				}
 			}else{
 				sv_setsv(ST(0), (SV*) &PL_sv_undef);
 			}
