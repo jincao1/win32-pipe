@@ -60,7 +60,10 @@ PIPE.PM HISTORY:
 	- Fix required perl version 5.6 -> 5.006.
 	- Add Github repo link to META.yml
 
-2022.03.31 Jin Cao <jc@jcao.ca> (v9.025.1)
+2020.10.29 (v0.026)
+        - Fix incorrect type (Shaun Lowry <shaunl@activestate.com>)
+
+2022.03.31 Jin Cao <jc@jcao.ca> (v9.026.1)
 	- Add Peek for personal usage with arbitrarily large version number.
 
 PIPE.PLL HISTORY:
