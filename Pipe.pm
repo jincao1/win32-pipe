@@ -355,6 +355,8 @@ undef on failure.
 If there is no data to be read then an empty string is returned. The data
 is not removed from the pipe. Use C<Read> to remove it.
 
+Added by Jin Cao for personal use. Use at your own risk.
+
 =item ResizeBuffer ( SIZE )
 
 Sets the size of the buffer of the instance of the named pipe to
@@ -415,6 +417,8 @@ following web site:
 =head1 AUTHOR
 
 Dave Roth <rothd@roth.net>
+
+Jin Cao <jc@jcao.ca>
 
 =head1 DISCLAIMER
 
