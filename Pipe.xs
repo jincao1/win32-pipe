@@ -276,6 +276,31 @@ XS(XS_WIN32__Pipe_Read)
 	PUTBACK;
 } 
 
+XS(XS_WIN32__Pipe_Peek)
+{
+	dXSARGS;
+	CPipe	*Pipe = 0;
+	void	*vpData = 0;
+	DWORD	dLen = 0;
+
+	if(items != 1){
+		CROAK("usage: Peek($PipeHandle);\n");
+	}
+	Pipe = INT2PTR(class CPipe *, SvIV(ST(0)));
+
+	PUSHMARK(sp);
+	
+	if (Pipe){
+			vpData = Pipe->Peek(&dLen);
+			if(vpData){
+				XPUSHs(sv_2mortal(newSVpv((char *)vpData, dLen)));
+			}else{
+				sv_setsv(ST(0), (SV*) &PL_sv_undef);
+			}
+	}
+	PUTBACK;
+} 
+
 XS(XS_WIN32__Pipe_Connect)
 {
 	dXSARGS;
@@ -436,6 +461,7 @@ XS(boot_Win32__Pipe)
 	newXS("Win32::Pipe::PipeClose",				XS_WIN32__Pipe_Close,  file);
 	newXS("Win32::Pipe::PipeWrite",				XS_WIN32__Pipe_Write,  file);
 	newXS("Win32::Pipe::PipeRead",				XS_WIN32__Pipe_Read,  file);
+	newXS("Win32::Pipe::PipePeek",				XS_WIN32__Pipe_Peek,  file);
 	newXS("Win32::Pipe::PipeConnect",			XS_WIN32__Pipe_Connect,  file);
 	newXS("Win32::Pipe::PipeDisconnect",		XS_WIN32__Pipe_Disconnect,  file);
 	newXS("Win32::Pipe::PipeError",				XS_WIN32__Pipe_Error,  file);

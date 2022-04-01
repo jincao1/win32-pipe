@@ -2,7 +2,7 @@ package Win32::Pipe;
 
 use 5.006;
 
-our $VERSION = '0.025';
+our $VERSION = '9.025.1';
 
 # Win32::Pipe.pm
 #       +==========================================================+
@@ -65,6 +65,13 @@ sub Read{
     my($self) = @_;
     my($Data);
     $Data = PipeRead($self->{'Pipe'});
+    return $Data;
+}
+
+sub Peek{
+    my($self) = @_;
+    my($Data);
+    $Data = PipePeek($self->{'Pipe'});
     return $Data;
 }
 
@@ -339,6 +346,14 @@ and C<ERROR_TEXT>.
 
 Reads from the named pipe. Returns data read from the pipe on success,
 undef on failure.
+
+=item Peek ()
+
+Peek at the named pipe and returns any data read on the pipe on success,
+undef on failure.
+
+If there is no data to be read then an empty string is returned. The data
+is not removed from the pipe. Use C<Read> to remove it.
 
 =item ResizeBuffer ( SIZE )
 

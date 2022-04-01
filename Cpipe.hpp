@@ -20,6 +20,7 @@ class CPipe {
 		~CPipe();
 		int	Write(void *vBuffer, DWORD dSize);
 		char *Read(DWORD *dLen);
+		char *Peek(DWORD *dLen);
 		int	Error(int iErrorNum, char *szErrorText);
 		int	EndOfFile();
 		int Connect();

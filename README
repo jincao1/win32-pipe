@@ -60,6 +60,9 @@ PIPE.PM HISTORY:
 	- Fix required perl version 5.6 -> 5.006.
 	- Add Github repo link to META.yml
 
+2022.03.31 Jin Cao <jc@jcao.ca> (v9.025.1)
+	- Add Peek for personal usage with arbitrarily large version number.
+
 PIPE.PLL HISTORY:
 ----------------
 96.06.10 Dave Roth <rothd@roth.net>
@@ -237,6 +240,11 @@ Read()
 	Reads from the named pipe.
 	returns: data read from the pipe if success
 	         undef if failure
+
+Peek()
+	Peek at the named pipe.
+	returns: data read (but not removed) from pipe if success
+	         undef on failure.
 
 ResizeBuffer($Size)
 	Sets the instance of the named pipe's buffer to $Size.

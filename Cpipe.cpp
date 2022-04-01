@@ -164,6 +164,12 @@ char *CPipe::Read(DWORD *dLen){
 	return (bResult)? cBuffer:0;
 }
 
+char *CPipe::Peek(DWORD *dLen){
+	BOOL bResult;
+	bResult = PeekNamedPipe( hPipe, cBuffer, dBufferSize, dLen, NULL, NULL );
+	return (bResult)? cBuffer:NULL;
+}
+
 int	CPipe::Write(void *vBuffer, DWORD dSize){
 	BOOL bResult;
 	DWORD	cbBytes = 0, cbReply = 0;
